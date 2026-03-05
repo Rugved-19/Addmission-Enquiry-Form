@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card shadow">
+    <div class="card-header bg-warning">
+        All Admission Enquiries
+    </div>
+
+    <div class="card-body table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Course</th>
+                    <th>Date</th>
+                    <th>Handled By</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for e in enquiries %}
+                <tr>
+                    <td>{{ e.student_name }}</td>
+                    <td>{{ e.contact }}</td>
+                    <td>{{ e.email }}</td>
+                    <td>{{ e.course_name }}</td>
+                    <td>{{ e.enquiry_date }}</td>
+                    <td>{{ e.enquiry_handled_by }}</td>
+
+                    <td>
+                        <a href="{% url 'delete_enquiry' e.id %}" 
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Are you sure you want to delete this enquiry?')">
+                           Delete
+                        </a>
+                    </td>
+
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center text-muted">
+                        No Enquiries Found
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+{% endblock %}

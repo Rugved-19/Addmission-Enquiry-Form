@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card shadow-lg">
+    <div class="card-header bg-primary text-white">
+        Add Admission Enquiry
+    </div>
+
+    <div class="card-body">
+        <form method="POST" autocomplete="off" novalidate>
+            {% csrf_token %}
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <label>Student Name</label>
+                    {{ form.student_name }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Contact</label>
+                    {{ form.contact }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Email (optional)</label>
+                    {{ form.email }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Mode of Enquiry</label>
+                    {{ form.mode_of_enquiry }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Course Name</label>
+                    {{ form.course_name }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Enquiry Date</label>
+                    {{ form.enquiry_date }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Educational</label>
+                    {{ form.educational }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Handled By</label>
+                    {{ form.enquiry_handled_by }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label>Reference</label>
+                    {{ form.reference }}
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label>Address</label>
+                    {{ form.address }}
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label>Remarks</label>
+                    {{ form.remarks }}
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label>Reason Not To Join</label>
+                    {{ form.reason_not_to_join }}
+                </div>
+
+                <!-- Excel File Path -->
+                <div class="col-12 mb-3">
+                    <label>Excel File Location (only fill if you want to change it)</label>
+                    {{ form.excel_file_path }}
+
+                    {% if saved_path %}
+                    <p class="text-success mt-2">
+                        Current Excel File: <b>{{ saved_path }}</b>
+                    </p>
+                    {% endif %}
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">
+                Submit Enquiry
+            </button>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}
